@@ -1,0 +1,33 @@
+Secure Development in Go
+A quick guide on how to build APIs securely with Go
+5 Feb 2018
+
+Dion Bramley
+Senior Software Engineer, Spalk
+dionbramley@gmail.com
+
+* What is Go?
+
+- compiled
+- statically typed
+- concurrent
+- garbage-collected
+
+Designed to fix Google sized scaling problems in software engineering:
+
+- slow builds
+- each programmer using a different subset of the language
+- poor program understanding (code hard to read, poorly documented, and so on)
+- duplication of effort
+- cost of updates
+- difficulty of writing automatic tools
+- cross-language builds
+
+
+* Hello World
+
+.play helloWorld.go
+
+* fizzbuzz
+
+.play fizzbuzz.go /START/,/STOP/
