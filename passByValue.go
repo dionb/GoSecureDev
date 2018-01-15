@@ -8,17 +8,17 @@ type Person struct {
 	lastName  string
 }
 
+// START OMIT
 func changeName(p Person) {
 	p.firstName = "Bob"
 }
-
 func main() {
 	person := Person{
 		firstName: "Alice",
 		lastName:  "Dow",
 	}
-
 	changeName(person)
-
 	fmt.Println(person)
 }
+
+//STOP OMIT

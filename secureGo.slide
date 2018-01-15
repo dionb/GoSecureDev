@@ -37,17 +37,43 @@ Designed to fix Google sized scaling problems in software engineering:
 
 * Deep pass by value
 
-* Functional as an idiom
+.play passByValue.go /START/,/STOP/
+.play passByPointer.go /START/,/STOP/
 
+* Multiple and named returns
+
+.code namedReturn.go
+
+* Defer
+
+.code defer.go /START/,
+
+* Easy, lightweight multithreading
+ go list.Sort()  // run list.Sort concurrently; don't wait for it.
+
+Distribute tasks to multiple threads:
+
+ func Announce(messages []string, destination string) {
+ 	for _,m := range messages {
+     	go func(m string) {
+     		buf := bytes.NewBufferString(m)
+     		resp, _ := http.Post(destination, "", &buf)
+    	}(m)  // Note the parentheses - must call the function.
+  	}
+ }
 * Share memory by communicating
 
 * Sync with select
+
+.play select.go /START/,/STOP/
 
 * Implicit interface satisfaction
 
 * No generics - waaaaaat??
 
 * Exceptions are not exceptional
+
+.code error.go
 
 
 * Build your own API
