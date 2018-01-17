@@ -75,6 +75,10 @@ Distribute tasks to multiple threads:
 
 .code error.go
 
+* Escape analysis
+
+Anytime a value is shared outside the scope of a function’s stack frame, it will be placed (or allocated) on the heap. It’s the job of the escape analysis algorithms to find these situations and maintain a level of integrity in the program. The integrity is in making sure that access to any value is always accurate, consistent and efficient. - Ardan labs
+
 
 * Build your own API
 

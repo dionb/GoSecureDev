@@ -1,3 +1,5 @@
+package main // OMIT
+
 func ReadFull(r Reader, buf []byte) (n int, err error) {
 	var nr int
 	for len(buf) > 0 && err == nil {
