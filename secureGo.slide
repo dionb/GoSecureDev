@@ -5,15 +5,11 @@ A quick guide on how to build APIs securely with Go
 Dion Bramley
 Senior Software Engineer, Spalk
 dionbramley@gmail.com
+github.com/dionb
 
-* What is Go?
+* Why build go?
 
-- compiled
-- statically typed
-- concurrent
-- garbage-collected
-
-Designed to fix Google sized scaling problems in software engineering:
+Designed to fix Google sized problems in software engineering:
 
 - slow builds
 - each programmer using a different subset of the language
@@ -22,6 +18,16 @@ Designed to fix Google sized scaling problems in software engineering:
 - cost of updates
 - difficulty of writing automatic tools
 - cross-language builds
+
+* What is Go?
+
+- compiled
+- statically typed
+- designed for concurrency
+- garbage-collected
+- simple syntax
+- no magic - every operation is O(1)
+- consistent look
 
 
 * Hello World
@@ -44,9 +50,40 @@ Designed to fix Google sized scaling problems in software engineering:
 
 .code namedReturn.go
 
+* Exceptions are not exceptional
+
+.code error.go
+
 * Defer
 
 .code defer.go /START/,
+
+
+* No generics - waaaaaat??
+
+* Jon Skeet on generics:
+
+Bad:
+
+- Type information is lost at compile time, so not available at execution time
+- Can't be used for value types 
+- Syntax for calling generic methods sucks (IMO)
+- Syntax for constraints can get confusing
+- Wildcarding is generally confusing
+- Various restrictions due to the above - casting etc
+
+Good:
+
+- Wildcarding allows covariance/contravariance to be specified at calling side
+- It's better than nothing!
+
+* Implicit interface satisfaction
+
+.code interface.go /START1/,/STOP1/
+
+* Interfaces part 2
+
+.play interface.go /STOP1/,/STOP2/
 
 * Easy, lightweight multithreading
  go list.Sort()  // run list.Sort concurrently; don't wait for it.
@@ -63,17 +100,13 @@ Distribute tasks to multiple threads:
  }
 * Share memory by communicating
 
+.play channel.go /START/,/^}/
+
 * Sync with select
 
 .play select.go /START/,/STOP/
 
-* Implicit interface satisfaction
 
-* No generics - waaaaaat??
-
-* Exceptions are not exceptional
-
-.code error.go
 
 * Escape analysis
 
@@ -83,6 +116,8 @@ Anytime a value is shared outside the scope of a function’s stack frame, it wi
 * Build your own API
 
 * A simple GET
+
+.play simpleGET.go
 
 * DB CRUD with JSON
 
@@ -99,5 +134,6 @@ Anytime a value is shared outside the scope of a function’s stack frame, it wi
 - No implementations of insecure protocols
 - It isn't something you already know
 - Binaries, binaries and more binaries
+- Can't distribute libraries securely - no DLLs
 - Plugins?
 - Using it is slow. I need to move fast a break things
