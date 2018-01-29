@@ -20,7 +20,7 @@ func makePizza(bench chan<- pizza, closing chan bool, working *sync.WaitGroup) {
 	defer working.Done()
 	for {
 		p = pizza(uuid.New().String()[:2])
-		<-time.After(time.Second * 2)
+		<-time.After(time.Millisecond * time.Duration(1000+rand.Int63n(2000)))
 		fmt.Printf("Pizza         %s is ready\n", p)
 		select {
 		case bench <- p:

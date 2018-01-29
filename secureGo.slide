@@ -106,8 +106,6 @@ Distribute tasks to multiple threads:
 
 .play select.go /START/,/STOP/
 
-
-
 * Escape analysis
 
 Anytime a value is shared outside the scope of a function’s stack frame, it will be placed (or allocated) on the heap. It’s the job of the escape analysis algorithms to find these situations and maintain a level of integrity in the program. The integrity is in making sure that access to any value is always accurate, consistent and efficient. - Ardan labs
@@ -119,7 +117,13 @@ Anytime a value is shared outside the scope of a function’s stack frame, it wi
 
 .play simpleGET.go
 
-* DB CRUD with JSON
+* DB READ
+
+ err := db.QueryRow("SELECT username FROM users WHERE id=?", id).Scan(&username)
+
+ .play 
+
+* INSERT & JSON
 
 * OS.Exec
 
@@ -127,7 +131,19 @@ Anytime a value is shared outside the scope of a function’s stack frame, it wi
 
 * Testing
 
+.code demo_test.go /START/,/STOP/
+
+: go test -v demo_test.go
+
 * Tooling
+
+- go get $url
+- go fmt
+- goimports
+- go vet
+- go test -race
+- go generate
+- present
 
 * Why NOT Go?
 
@@ -137,3 +153,6 @@ Anytime a value is shared outside the scope of a function’s stack frame, it wi
 - Can't distribute libraries securely - no DLLs
 - Plugins?
 - Using it is slow. I need to move fast a break things
+
+* Let's make a pizza shop!
+
