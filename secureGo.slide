@@ -19,6 +19,11 @@ Designed to fix Google sized problems in software engineering:
 - difficulty of writing automatic tools
 - cross-language builds
 
+: Docker
+: Kubernetes
+: InfluxDB
+: Gogs
+
 * What is Go?
 
 - compiled
@@ -91,13 +96,14 @@ Good:
 Distribute tasks to multiple threads:
 
  func Announce(messages []string, destination string) {
- 	for _,m := range messages {
-     	go func(m string) {
-     		buf := bytes.NewBufferString(m)
-     		resp, _ := http.Post(destination, "", &buf)
-    	}(m)  // Note the parentheses - must call the function.
+ 	 for _,m := range messages {
+     	 go func(m string) {
+     		 buf := bytes.NewBufferString(m)
+     		 resp, _ := http.Post(destination, "", &buf)
+    	  }(m)  // Note the parentheses - must call the function.
   	}
  }
+
 * Share memory by communicating
 
 .play channel.go /START/,/^}/
@@ -115,15 +121,21 @@ Anytime a value is shared outside the scope of a function’s stack frame, it wi
 
 * A simple GET
 
-.play simpleGET.go
+.code simpleGET.go
 
 * DB READ
 
- err := db.QueryRow("SELECT username FROM users WHERE id=?", id).Scan(&username)
+ db, err = sql.Open("mysql", "hello:world@tcp(127.0.0.1:3306)/gosecdev")
 
- .play 
+.code server/server.go /STARTselect/,/STOPselect/
+
+.play selectReq.go /START/,/STOP/
 
 * INSERT & JSON
+
+.code server/server.go /STARTinsert/,/STOPinsert/
+
+.play insertReq.go /START/,/STOP/
 
 * OS.Exec
 
@@ -153,6 +165,10 @@ Anytime a value is shared outside the scope of a function’s stack frame, it wi
 - Can't distribute libraries securely - no DLLs
 - Plugins?
 - Using it is slow. I need to move fast a break things
+
+: rounding
+: GUI
+: carrier api
 
 * Let's make a pizza shop!
 
