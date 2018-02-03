@@ -41,8 +41,7 @@ Designed to fix Google sized problems in software engineering:
 
 * fizzbuzz
 
-.play fizzbuzz.go /START/,/STOP/
-
+.play -edit fizzbuzz.go /START/,/STOP/
 
 * Language features
 
@@ -96,12 +95,16 @@ Good:
 Distribute tasks to multiple threads:
 
  func Announce(messages []string, destination string) {
+
  	 for _,m := range messages {
      	 go func(m string) {
+
      		 buf := bytes.NewBufferString(m)
      		 resp, _ := http.Post(destination, "", &buf)
+
     	  }(m)  // Note the parentheses - must call the function.
   	}
+
  }
 
 * Share memory by communicating
@@ -125,11 +128,11 @@ Anytime a value is shared outside the scope of a function’s stack frame, it wi
 
 * DB READ
 
- db, err = sql.Open("mysql", "hello:world@tcp(127.0.0.1:3306)/gosecdev")
+ //db, err = sql.Open("mysql", "hello:world@tcp(127.0.0.1:3306)/gosecdev")
 
 .code server/server.go /STARTselect/,/STOPselect/
 
-.play selectReq.go /START/,/STOP/
+.play -edit selectReq.go /START/,/STOP/
 
 * INSERT & JSON
 
@@ -139,7 +142,14 @@ Anytime a value is shared outside the scope of a function’s stack frame, it wi
 
 * OS.Exec
 
+.code server/server.go /STARTexec/,/STOPexec/
+
+.play execReq.go /START/,/STOP/
+
 * Crypto/bcrypt
+
+.play -edit encrypt.go  /START/,/STOP/
+.play -edit hashCompare.go  /START/,/STOP/
 
 * Testing
 

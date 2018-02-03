@@ -8,7 +8,7 @@ import (
 
 func main() {
 	//START OMIT
-	resp, err := http.Get("http://localhost:8080/user?id=2")
+	resp, _ := http.Get("http://localhost:8080/user?id=2")
 	if err != nil { // OMIT
 		fmt.Println(err.Error()) // OMIT
 		return                   // OMIT
