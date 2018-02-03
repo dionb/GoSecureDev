@@ -58,7 +58,11 @@ Designed to fix Google sized problems in software engineering:
 
 .code error.go
 
-* Defer
+* Defer example
+
+.play defer1.go /START/,/STOP/
+
+* Defer use case
 
 .code defer.go /START/,
 
@@ -138,7 +142,7 @@ Anytime a value is shared outside the scope of a function’s stack frame, it wi
 
 .code server/server.go /STARTinsert/,/STOPinsert/
 
-.play insertReq.go /START/,/STOP/
+.play -edit insertReq.go /START/,/STOP/
 
 * OS.Exec
 
