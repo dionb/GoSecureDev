@@ -12,6 +12,7 @@ func main() {
 	password := []byte("password")
 	err := bcrypt.CompareHashAndPassword(hash, password)
 	if err != nil {
+		fmt.Println("bcrypt error")
 		fmt.Println(err.Error())
 		return
 	}

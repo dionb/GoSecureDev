@@ -43,6 +43,8 @@ Designed to fix Google sized problems in software engineering:
 
 .play helloWorld.go
 
+: export using Case of first letter
+
 * fizzbuzz
 
 .play -edit fizzbuzz.go /START/,/STOP/
@@ -56,17 +58,29 @@ Designed to fix Google sized problems in software engineering:
 .play passByValue.go /START/,/STOP/
 .play passByPointer.go /START/,/STOP/
 
+: avoid accidentally modifying memory
+: especially helpful in multithreading
+
 * Multiple and named returns
 
 .code namedReturn.go
+
+: pre-initialises named output variables
+: doesn't return a tuble like python
+: enables next feature
 
 * Exceptions are not exceptional
 
 .code error.go
 
+: are allowed to panic, but not a great idea
+: no showing workings to attackers when they break things
+
 * Defer example
 
 .play defer1.go /START/,/STOP/
+
+: alays run this function when returning from my current scope
 
 * Defer use case
 
@@ -107,9 +121,9 @@ Distribute tasks to multiple threads:
  func Announce(messages []string, destination string) {
 
  	 for _,m := range messages {
-     	 go func(m string) {
+     	 go func(k string) {
 
-     		 buf := bytes.NewBufferString(m)
+     		 buf := bytes.NewBufferString(k)
      		 resp, _ := http.Post(destination, "", &buf)
 
     	  }(m)  // Note the parentheses - must call the function.
@@ -117,24 +131,35 @@ Distribute tasks to multiple threads:
 
  }
 
+: function inherits scope of where it is defined
+: explicitly pass parameters to inline functions
+
 * Share memory by communicating
 
 .play channel.go /START/,/^}/
+
+: simplify implementation
+: eliminate bugs from concurrently accessing data
+: channel operations are blocking I/O calls
 
 * Sync with select
 
 .play select.go /START/,/STOP/
 
+: randomly chooses an operatiton from the ones that are available
+: used for implementing timeouts
+
+: These all combine to make your complicated problems easy to solve with safe performant code.
+: Can do concurrency functionally
+: Fewer hard to find bugs
+
 * Escape analysis
 
 Anytime a value is shared outside the scope of a function’s stack frame, it will be placed (or allocated) on the heap. It’s the job of the escape analysis algorithms to find these situations and maintain a level of integrity in the program. The integrity is in making sure that access to any value is always accurate, consistent and efficient. - Ardan labs
 
-
-* Build your own API
-
-* A simple GET
-
-.code simpleGET.go
+: You don't usually choose whether you data is allocated on the heap or stack, the compiler chooses for you
+: Don't cause memory leaks,
+: Don't accidentally free memory you want to use elsewhere
 
 * Struct annotation and JSON
 
@@ -145,6 +170,12 @@ Anytime a value is shared outside the scope of a function’s stack frame, it wi
 : good for marshalling between formats
 : and secure code reuse
 
+* Build your own API
+
+* A simple GET
+
+.code simpleGET.go
+
 * DB READ
 
  db, err = sql.Open("mysql", "hello:world@tcp(127.0.0.1:3306)/gosecdev")
@@ -153,7 +184,8 @@ Anytime a value is shared outside the scope of a function’s stack frame, it wi
 
 .play -edit selectReq.go /START/,/STOP/
 
-: 
+: sql inejection
+: paramaterised queries
 
 * INSERT & JSON
 
@@ -162,6 +194,8 @@ Anytime a value is shared outside the scope of a function’s stack frame, it wi
 .play -edit insertReq.go /START/,/STOP/
 
 : sql injection
+: omitted a method switch
+: talk about dbr
 
 * OS.Exec
 
@@ -193,6 +227,8 @@ Anytime a value is shared outside the scope of a function’s stack frame, it wi
 - go test -race
 - go generate
 - present
+
+: go vet will catch misuse of concurrency primitives and syntax issues in struct tags as well as other functional linting
 
 * Why NOT Go?
 

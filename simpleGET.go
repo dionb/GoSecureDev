@@ -11,6 +11,6 @@ func pingHandler(rw http.ResponseWriter, req *http.Request) {
 
 func main() {
 	http.HandleFunc("/", pingHandler)
-	http.Handler(http.FileServer("/public"))
+	http.Handler(http.FileServer("/public")) // HL
 	log.Println(http.ListenAndServe(":8080", nil))
 }
