@@ -7,6 +7,8 @@ Senior Software Engineer, Spalk
 dionbramley@gmail.com
 github.com/dionb
 
+: start server
+
 * Why build go?
 
 Designed to fix Google sized problems in software engineering:
@@ -204,6 +206,8 @@ Anytime a value is shared outside the scope of a function’s stack frame, it wi
 .play execReq.go /START/,/STOP/
 
 : script injection
+
+: html templating prevents code insertion by default to prevent XSS
 
 * Crypto/bcrypt
 
