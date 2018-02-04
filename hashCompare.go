@@ -8,7 +8,7 @@ import (
 
 func main() {
 	// START OMIT
-	hash := []byte("$2a$10$ijyoa5EKhCM2Pxx7qTKuzO.fK5UiqUywXPGFDFymFhYdVqBvmrj8C")
+	hash := []byte("")
 	password := []byte("password")
 	err := bcrypt.CompareHashAndPassword(hash, password)
 	if err != nil {

@@ -34,6 +34,10 @@ Designed to fix Google sized problems in software engineering:
 - no magic - every operation is O(1)
 - consistent look
 
+: runtime
+: less verbose than java
+: better concurrency than C++
+
 
 * Hello World
 
@@ -42,6 +46,8 @@ Designed to fix Google sized problems in software engineering:
 * fizzbuzz
 
 .play -edit fizzbuzz.go /START/,/STOP/
+
+: := is called type inference
 
 * Language features
 
@@ -130,13 +136,24 @@ Anytime a value is shared outside the scope of a function’s stack frame, it wi
 
 .code simpleGET.go
 
+* Struct annotation and JSON
+
+.play -edit json.go /START/,/STOP/
+
+: sensitive data exposure
+: unsafe deserialisation
+: good for marshalling between formats
+: and secure code reuse
+
 * DB READ
 
- //db, err = sql.Open("mysql", "hello:world@tcp(127.0.0.1:3306)/gosecdev")
+ db, err = sql.Open("mysql", "hello:world@tcp(127.0.0.1:3306)/gosecdev")
 
 .code server/server.go /STARTselect/,/STOPselect/
 
 .play -edit selectReq.go /START/,/STOP/
+
+: 
 
 * INSERT & JSON
 
@@ -144,16 +161,22 @@ Anytime a value is shared outside the scope of a function’s stack frame, it wi
 
 .play -edit insertReq.go /START/,/STOP/
 
+: sql injection
+
 * OS.Exec
 
 .code server/server.go /STARTexec/,/STOPexec/
 
 .play execReq.go /START/,/STOP/
 
+: script injection
+
 * Crypto/bcrypt
 
 .play -edit encrypt.go  /START/,/STOP/
 .play -edit hashCompare.go  /START/,/STOP/
+
+: password storage - broken authentication
 
 * Testing
 
