@@ -26,6 +26,7 @@ Designed to fix Google sized problems in software engineering:
 : InfluxDB
 : Gogs
 
+
 * What is Go?
 
 - compiled
@@ -39,6 +40,9 @@ Designed to fix Google sized problems in software engineering:
 : runtime
 : less verbose than java
 : better concurrency than C++
+: great standard library
+: oauth2 implementation
+: not for rapid prototyping - more set & forget
 
 
 * Hello World
