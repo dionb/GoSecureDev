@@ -1,0 +1,73 @@
+How To Not Trust Your Team
+
+12 Apr 2018
+
+Dion Bramley
+Senior Software Engineer, Trail
+dionbramley@gmail.com
+
+* What is Go?
+
+- compiled
+- statically typed
+- concurrent
+- garbage-collected
+
+Designed to fix Google sized scaling problems in software engineering:
+
+- slow builds
+- each programmer using a different subset of the language
+- poor program understanding (code hard to read, poorly documented, and so on)
+- duplication of effort
+- cost of updates
+- difficulty of writing automatic tools
+- cross-language builds
+
+
+* Hello World
+
+.play helloWorld.go
+
+* fizzbuzz
+
+.play fizzbuzz.go /START/,/STOP/
+
+
+* Language features
+
+* Deep pass by value
+
+* Functional as an idiom
+
+* Share memory by communicating
+
+* Sync with select
+
+* Implicit interface satisfaction
+
+* No generics - waaaaaat??
+
+* Exceptions are not exceptional
+
+
+* Build your own API
+
+* A simple GET
+
+* DB CRUD with JSON
+
+* OS.Exec
+
+* Crypto/bcrypt
+
+* Testing
+
+* Tooling
+
+* Why NOT Go?
+
+- No implementations of insecure protocols
+- It isn't something you already know
+- Binaries, binaries and more binaries
+- Plugins?
+- Using it is slow. I need to move fast a break things
